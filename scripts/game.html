@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Личный сайт </title>
+	<link rel="stylesheet" href="../style.css">
+	<script type="text/javascript">
+		var text = "";
+		var level = 1;
+		
+		function read(id){
+			return document.getElementById(id).value;
+		}
+
+		function write(id,text){
+			document.getElementById(id).innerHTML = text;
+		}
+
+		function getRandomNumber(max){
+			return Math.round(Math.random()*max);
+		}
+		
+		function generateText (brief,letters, lenght){
+			write("info",brief);			
+			for (var i = 0; i<lenght; i++){
+				var n = getRandomNumber(letters.length-1);
+				text = text + letters[n];
+			}
+			write("info1",text);
+		}
+		
+		function resault(){
+			var userText = read("userAnswer");
+			if (userText == text){
+				if (level == 3){
+					write("info","Вы прошли всю игру!");
+					write("info1","При нажатии \"Начать\" Вы снова будете проходить игру с первого уровня!");
+					level = 1;
+				}else {
+					write("info1","Всё верно, переходим на следующий уровень!");
+					level++;
+				}			
+			} else{
+				write("info1","К, сожалению, вы ошиблись, попробуем снова!");;
+			}
+			text = "";
+			document.getElementById("userAnswer").value = "";
+		}
+		
+		function play(){
+			if (level == 1){
+				var brief = "Положите 4 пальца левой руки - мизинец, безымянный, средний и указательный - " +
+					"на клавиши ф,ы,в,а. Запомните, что буква А находится под вашим указательным пальцем, " +
+					"а Ф - под мизинцем. Теперь неспеша набирайте текст. Постарайтесь не смотреть на клавиатуру.";
+				generateText(brief, ["ф","а"], 10)
+			} else if (level == 2){
+				var brief = "Положите 4 пальца левой руки - мизинец, безымянный, средний и указательный - " +
+					"на клавиши ф,ы,в,а. Запомните, что буква Ы находится под вашим безымянным пальцем, " +
+					"а В - под средним. Теперь неспеша набирайте текст. Постарайтесь не смотреть на клавиатуру.";
+				generateText(brief, ["ы","в"], 10);
+			} else if (level == 3){
+				var brief = "Положите 4 пальца левой руки - мизинец, безымянный, средний и указательный - " +
+					"на клавиши ф,ы,в,а. Запомните, что буква А находится под вашим указательным пальцем, " +
+					"В - под средним, Ы - под безымянным, а Ф - под мизинцем. Теперь неспеша набирайте текст." +
+					"Постарайтесь не смотреть на клавиатуру.";
+				generateText(brief, ["ф","а","в","ы"], 20);
+			}
+		}
+	</script>
+</head>
+
+<body>
+<div class="content">
+	<div class="header">
+		<a href="../index.html">Главная</a>
+		<a href="riddle.html">Загадки</a>
+		<a href="number.html">Угадайка</a>
+		<a href="#">Слепая печать</a>
+	</div>
+
+<div class="contentWrap">
+    <div class="content">
+        <div class="center">
+			<h1>Научимся слепой печати!</h1>
+			<div class="box">
+				<p id="info">Для создания уровня нажми "Начать"</p>
+				<p id="info1">Для проверки результата нажми "Проверить"</p>
+				<input type="text" id="userAnswer">
+				<br>
+				<a href="#" onClick="play();" id="button1">Начать</a>
+				<a href="#" onClick="resault();" id="button2">Проверить</a>
+			</div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="footer">
+	Copyright &copy; LoveGames
+<div>
+</body>
+</html>

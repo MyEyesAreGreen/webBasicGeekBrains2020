@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Личный сайт </title>
+	<link rel="stylesheet" href="../style.css">
+	<script type="text/javascript">
+		var arr = [];
+
+		function readArray(){
+			var N = document.getElementById("userAnswer").value.split(",");
+			arr = [];
+			for (var i = 0; i < N.length; i++){
+				arr.push(parseInt(N[i]))
+			}
+		}
+		
+		function nRes(){
+			readArray();
+			document.getElementById("info").innerHTML = "";
+			for(var i = 0; i < arr[0]; i++) {
+				if (i+1 == arr[0]) document.getElementById("info").innerHTML += i + 1;
+				else document.getElementById("info").innerHTML += i + 1 + ", ";
+			}
+		}
+		
+		function sumArray() {
+			readArray();
+			var sum = 0;
+			for(var i = 0; i < arr.length; i++) {
+				sum += arr[i];
+			}
+			document.getElementById("info").innerHTML = sum;
+		}
+		
+		function maxArray() {
+			readArray();
+			var max = arr[0];
+			for(var i = 1; i < arr.length; i++) {
+				if(max < arr[i]) max = arr[i];
+			}
+			document.getElementById("info").innerHTML = max;
+		}
+		
+		function minArray() {
+			readArray();
+			var min = arr[0];
+			for(var i = 1; i < arr.length; i++) {
+				if(min > arr[i]) min = arr[i];
+			}
+			document.getElementById("info").innerHTML =  min;
+		}
+		
+		function getEvenArray() {
+			readArray();
+			document.getElementById("info").innerHTML = "";
+			for(var i = 0; i < arr.length; i++) {
+				if(arr[i] % 2 == 0) document.getElementById("info").innerHTML += arr[i] + ", ";
+			}
+		}
+		
+		function getNotEvenArray() {
+			readArray();
+			document.getElementById("info").innerHTML = "";
+			for(var i = 0; i < arr.length; i++) {
+				if(arr[i] % 2 != 0) document.getElementById("info").innerHTML += arr[i] + ", ";
+			}
+		}
+	</script>
+</head>
+	
+<body>
+<div class="content">
+	<div class="header">
+		<a href="../index.html">Главная</a>
+		<a href="riddle.html">Загадки</a>
+		<a href="number.html">Угадайка</a>
+		<a href="game.html">Слепая печать</a>
+	</div>
+	
+<div class="contentWrap">
+    <div class="content">
+        <div class="center">
+			<h1>Работа с массивами</h1>		
+			<div class="box">
+				<p>Введите длину или элементы массива</p>
+				<input type="text" id="userAnswer">
+				<p id="info">Тут будет результат</p>
+				<a href="#" onClick="nRes();">N-последовательных элементов</a>
+				<a href="#" onClick="sumArray();">Сумма чисел массива</a>
+				<a href="#" onClick="maxArray();">Max</a>
+				<a href="#" onClick="minArray();">Min</a>
+				<a href="#" onClick="getEvenArray();">Массив чётных чисел</a>
+				<a href="#" onClick="getNotEvenArray();">Массив нечётных чисел</a>
+			</div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="footer">
+	Copyright &copy; LoveGames
+<div>
+</body>
+</html>

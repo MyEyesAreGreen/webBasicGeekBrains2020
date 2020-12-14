@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Личный сайт </title>
+	<link rel="stylesheet" href="../style.css">
+	<script type="text/javascript">
+		function countBank(){
+			var a = parseFloat(document.getElementById("userAnswer1").value);
+			var b = parseFloat(document.getElementById("userAnswer2").value);
+			var h = parseFloat(document.getElementById("userAnswer3").value);
+			document.getElementById("info").innerHTML = "Площадь трапеции равна " + (((a+b)/2)*h).toFixed(2);
+		}
+	</script>
+</head>
+	
+<body>
+<div class="content">
+	<div class="header">
+		<a href="../index.html">Главная</a>
+		<a href="riddle.html">Загадки</a>
+		<a href="number.html">Угадайка</a>
+		<a href="game.html">Слепая печать</a>
+	</div>
+	
+<div class="contentWrap">
+    <div class="content">
+        <div class="center">
+			<h1>Площадь трапеции</h1>		
+			<div class="box">
+				<p>Введите длину верхнего основания</p>
+				<input type="text" id="userAnswer1">
+				<p>Введите длину нижнего основания</p>
+				<input type="text" id="userAnswer2">
+				<p>Введите высоту трапеции</p>
+				<input type="text" id="userAnswer3">
+				<p id="info">Тут будет результат</p>
+				<a href="#" onClick="countBank();">Посчитать</a>
+			</div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="footer">
+	Copyright &copy; LoveGames
+<div>
+</body>
+</html>

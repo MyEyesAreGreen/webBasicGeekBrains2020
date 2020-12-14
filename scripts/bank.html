@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Личный сайт </title>
+	<link rel="stylesheet" href="../style.css">
+	<script type="text/javascript">
+		function countBank(){
+			var deposit = +document.getElementById("userAnswer1").value;
+			var percent = +document.getElementById("userAnswer2").value;
+			var yearUser = +document.getElementById("userAnswer3").value;
+			percent = (percent / 100);
+			document.getElementById("info").innerHTML = "";
+			for(var year = 1; year <= yearUser; year++){
+				deposit = ((deposit*percent) +  deposit);
+				document.getElementById("info").innerHTML += "Вклад за " + year + "-ый год = " + deposit.toFixed(2)  + " руб"+ "<br/>";
+			}
+		}
+	</script>
+</head>
+	
+<body>
+<div class="content">
+	<div class="header">
+		<a href="../index.html">Главная</a>
+		<a href="riddle.html">Загадки</a>
+		<a href="number.html">Угадайка</a>
+		<a href="game.html">Слепая печать</a>
+	</div>
+	
+<div class="contentWrap">
+    <div class="content">
+        <div class="center">
+			<h1>Сумма вклада через несколько лет</h1>		
+			<div class="box">
+				<p>Введи сумму вклада в рублях</p>
+				<input type="text" id="userAnswer1">
+				<p>Введи процент вклада</p>
+				<input type="text" id="userAnswer2">
+				<p>Введи количество лет</p>
+				<input type="text" id="userAnswer3">
+				<p id="info">Тут будет результат</p>
+				<a href="#" onClick="countBank();">Посчитать</a>
+			</div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="footer">
+	Copyright &copy; LoveGames
+<div>
+</body>
+</html>
